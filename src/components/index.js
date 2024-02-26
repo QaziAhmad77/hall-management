@@ -1,0 +1,12 @@
+import Features from "./Home/Features";
+import Hero from "./Home/Hero";
+import Packages from "./Hotel/Packages";
+import Subcribe from "./Home/Subcribe";
+import Testimonial from "./Home/Testimonial";
+import Choose from "../components/Home/Choose";
+import Occation from "./Hotel/Occation";
+import Messages from "./Hotel/Messages";
+import Inspired from "./Hotel/Inspired";
+import Platform from "./Hotel/Platform";
+export { Features, Hero, Packages, Subcribe, Testimonial, Choose };
+export { Occation, Messages, Inspired, Platform };
