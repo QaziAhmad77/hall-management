@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { packages2 } from "../Data/Data";
 import { Link } from "react-router-dom";
+
 const Packages = () => {
   const [element, setElement] = useState(6);
   const loadMore = () => {
     setElement(element + 3);
   };
-  console.log(element, "Element");
   const slice = packages2.slice(0, element);
-  console.log(slice, "slice");
 
   return (
     <div className=" w-[90%] mx-auto">
@@ -23,7 +22,7 @@ const Packages = () => {
         {slice.map((item) => {
           return (
             <div className=" ">
-              <div className=" relative">
+              <div className="relative">
                 <img src={item.imgUrl} alt="" />
                 <div className=" absolute top-0">
                   <p className=" bg-black py-1 px-2 text-white w-fit">
@@ -31,15 +30,15 @@ const Packages = () => {
                   </p>
                 </div>
                 <Link
-                  to={`/hotel/${item.id}`}
-                  className=" bg-[#F39D12] text-white py-3 px-6 rounded-md relative top-[-90px] left-16"
+                  to={`/hall/${item.id}`}
+                  className=" bg-[#F39D12] text-white py-3 px-6 rounded-md relative top-[-90px] left-[100px]"
                 >
                   {item.btn}
                 </Link>
               </div>
               <div className=" flex items-center gap-40">
                 <h1 className=" text-[14px] font-normal flex gap-3 items-center">
-                  <p className=" text-[#F39D12]">{item.icon}</p>
+                  <p className=" text-[#F39D12] whitespace-nowrap">{item.icon}</p>
                   {item.desc}
                 </h1>
 
@@ -51,10 +50,10 @@ const Packages = () => {
 
               <div className=" flex items-center md:gap-[7rem] gap-[6rem] pt-3">
                 <p className=" bg-[#F39D12] text-white py-2 px-4 rounded-md">
-                  {item.btn1}
+                  {item.bt2}
                 </p>
                 <p className="bg-[#F39D12] text-white py-2 px-4 rounded-md whitespace-nowrap">
-                  {item.bt2}
+                  {item.btn1}
                 </p>
               </div>
             </div>

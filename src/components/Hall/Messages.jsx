@@ -2,6 +2,7 @@ import React from "react";
 import img1 from "../../assets/images/Img - Avatar photo for JanJ.png";
 import ReactStars from "react-stars";
 import img2 from "../../assets/images/Button - Save restaurant to favorites → SVG.png";
+
 const Messages = () => {
   const ratingChanged = (newRating) => {
     console.log(newRating);

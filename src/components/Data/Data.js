@@ -14,6 +14,7 @@ import img13 from '../../assets/images/image 6.png'
 import img14 from '../../assets/images/image 7.png'
 import img15 from '../../assets/images/image 8.png'
 import { FaCar, FaHome } from "react-icons/fa";
+
 export const home = [
   {
     title: "Customized / Pre-Defined Menu",
@@ -104,9 +105,9 @@ export const packages2 = [
     icon: <FaHome />,
     desc: "35 kanals",
     icon1: <FaCar />,
-    desc1: "100%",
-    btn1: "Rs200000",
-    bt2: "Learn More",
+    desc1: "Warsak Road",
+    btn1: "Rs 200000",
+    bt2: "100 Peoples",
     title1: "Lovely Studio with Subrina hall views from Balcony",
     p: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
@@ -127,9 +128,9 @@ export const packages2 = [
     icon: <FaHome />,
     desc: "35 kanals",
     icon1: <FaCar />,
-    desc1: "100%",
-    btn1: "Rs200000",
-    bt2: "Learn More",
+    desc1: "Warsak Road",
+    btn1: "Rs 200000",
+    bt2: "200 People",
     title1: "Lovely Studio with Monal Marriage Hall hall views from Balcony",
     p: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
@@ -151,9 +152,9 @@ export const packages2 = [
     icon: <FaHome />,
     desc: "35 kanals",
     icon1: <FaCar />,
-    desc1: "100%",
-    btn1: "Rs200000",
-    bt2: "Learn More",
+    desc1: "Town",
+    btn1: "Rs 200000",
+    bt2: "400 People",
     title1: "Lovely Studio Pail Marquee Shiraz hall views from Balcony",
     p: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
@@ -175,9 +176,9 @@ export const packages2 = [
     icon: <FaHome />,
     desc: "35 kanals",
     icon1: <FaCar />,
-    desc1: "100%",
-    btn1: "Rs200000",
-    bt2: "Learn More",
+    desc1: "Kohat Road",
+    btn1: "Rs 200000",
+    bt2: "150 People",
     title1: "Lovely Studio with Peshawar Hall hall views from Balcony",
     p: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   },
@@ -304,3 +305,110 @@ export const packages2 = [
 ];
 
 export const Choose2 = [];
+
+export const days = [
+  {
+      id: 1,
+      day: 'Mon',
+  },
+  {
+      id: 2,
+      day: 'Tue',
+  },
+  {
+      id: 3,
+      day: 'Wed',
+  },
+  {
+      id: 4,
+      day: 'Thu',
+  },
+  {
+      id: 5,
+      day: 'Fri',
+  },
+  {
+      id: 6,
+      day: 'Sat',
+  },
+  {
+      id: 7,
+      day: 'Sun',
+  }
+];
+
+
+export const data = [
+  {
+    name: 'Jan',
+    uv: 4000,
+    pv: 2400,
+    amt: 2400,
+  },
+  {
+    name: 'Feb',
+    uv: 3000,
+    pv: 1398,
+    amt: 2210,
+  },
+  {
+    name: 'Mar',
+    uv: 2000,
+    pv: 9800,
+    amt: 2290,
+  },
+  {
+    name: 'Apr',
+    uv: 2780,
+    pv: 3908,
+    amt: 2000,
+  },
+  {
+    name: 'May',
+    uv: 1890,
+    pv: 4800,
+    amt: 2181,
+  },
+  {
+    name: 'Jun',
+    uv: 2390,
+    pv: 3800,
+    amt: 2500,
+  },
+  {
+    name: 'Jul',
+    uv: 3490,
+    pv: 4300,
+    amt: 2100,
+  },
+  {
+    name: 'Aug',
+    uv: 3490,
+    pv: 8300,
+    amt: 2100,
+  },
+  {
+    name: 'Sep',
+    uv: 3490,
+    pv: 4300,
+    amt: 2100,
+  },
+  {
+    name: 'Oct',
+    uv: 3490,
+    pv: 1300,
+    amt: 2100,
+  },
+  {
+    name: 'Nov',
+    uv: 3490,
+    pv: 6300,
+    amt: 2100,
+  },
+  {
+    name: 'Dec',
+    uv: 3490,
+    pv: 2300,
+    amt: 2100,
+  },
+];

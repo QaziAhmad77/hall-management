@@ -1,5 +1,6 @@
 import React from "react";
 import img1 from "../../assets/images/restaurateurs-790981.png.png";
+
 const Platform = () => {
   return (
     <div className=" back3 mt-28 md:py-0 py-6">

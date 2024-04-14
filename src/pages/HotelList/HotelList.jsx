@@ -3,11 +3,11 @@ import { Inspired, Messages, Occation, Packages, Platform } from '../../componen
 const HotelList = () => {
   return (
     <div>
-        <Occation />
-        <Packages />
-        <Messages />
-        <Inspired />
-        <Platform />
+      <Occation />
+      <Packages />
+      {/* <Messages /> */}
+      {/* <Inspired /> */}
+      <Platform />
     </div>
   )
 }

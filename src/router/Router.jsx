@@ -8,11 +8,14 @@ import RootLayout from "../components/Layout/RootLayout/RootLayout";
 import Signin from "../pages/Signin/Signin";
 import Register from "../pages/Register/Register";
 import HotelList from "../pages/HotelList/HotelList";
-import SinglePackagePage from "../components/Hotel/SinglePackagePage";
-import Dashboard from "../pages/Dashborad/Dashboard";
+import SinglePackagePage from "../components/Hall/SinglePackagePage";
+import Dashboard from "../pages/Dashboard/Dashboard";
 import MainLayout from "../components/Layout/mainLayout/MainLayout";
-import User from "../pages/Dashborad/User";
-import Owner from "../pages/Dashborad/Owner";
+import User from "../components/Dashboard/User";
+import Owner from "../components/Dashboard/Halls";
+import CreateHall from "../pages/CreateHall/CreateHall";
+import HallDetail from "../pages/HallDetail/HallDetail";
+
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -20,14 +23,16 @@ export const router = createBrowserRouter(
         <Route index element={<Home />} />
         <Route path="Signin" element={<Signin />} />
         <Route path="register" element={<Register />} />
-        <Route path="hotel" element={<HotelList />} />
-        <Route path="hotel/:hotelId" element={<SinglePackagePage />} />
       </Route>
+
+      <Route path="halls" element={<HotelList />} />
+      <Route path="hall/:hallId" element={<HallDetail />} />
+      <Route path="create-hall" element={<CreateHall />} />
 
       <Route path="/" element={<MainLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="user" element={<User />} />
-        <Route path="owner" element={<Owner />} />
+        <Route path="users" element={<User />} />
+        <Route path="hall-list" element={<Owner />} />
       </Route>
     </>
   )

@@ -13,7 +13,6 @@ const Footer = () => {
             <p className=" text-[12px] font-normal">Delivery Near Me</p>
             <p className=" text-[12px] font-normal">Restaurants Open Now</p>
           </div>
-
           <div className=" text-white flex flex-col gap-3">
             <h1 className=" text-[14px] font-semibold">OpenTable</h1>
             <p className=" text-[12px] font-normal">About Us</p>

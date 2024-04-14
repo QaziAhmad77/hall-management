@@ -7,13 +7,11 @@ import owner from "../../assets/images/owner.png";
 import icon1 from "../../assets/images/Frame.png";
 import icon2 from "../../assets/images/Frame (1).png";
 import icon3 from "../../assets/images/Frame (2).png";
-import main from "../../assets/images/main.png";
 
 const SinglePackagePage = () => {
   const { hotelId } = useParams();
   const [mainImage, setMainImage] = useState();
   const [hotelDetail, setHotelDetail] = useState();
-  console.log(mainImage, "Main Image");
 
   const filteredObj = () => {
     const hotel = packages2.filter((htl) => htl.id === parseInt(hotelId));
