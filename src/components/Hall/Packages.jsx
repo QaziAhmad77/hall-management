@@ -38,7 +38,9 @@ const Packages = () => {
               </div>
               <div className=" flex items-center gap-40">
                 <h1 className=" text-[14px] font-normal flex gap-3 items-center">
-                  <p className=" text-[#F39D12] whitespace-nowrap">{item.icon}</p>
+                  <p className=" text-[#F39D12] whitespace-nowrap">
+                    {item.icon}
+                  </p>
                   {item.desc}
                 </h1>
 
