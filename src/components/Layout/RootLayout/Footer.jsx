@@ -34,7 +34,6 @@ const Footer = () => {
             <p className=" text-[12px] font-normal">OpenTable.jp</p>
             <p className=" text-[12px] font-normal">OpenTable.de</p>
             <p className=" text-[12px] font-normal">OpenTable.es</p>
-            
           </div>
 
           <div className=" text-white flex flex-col gap-3">

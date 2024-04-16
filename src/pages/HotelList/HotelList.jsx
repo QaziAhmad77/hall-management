@@ -1,5 +1,11 @@
-import React from 'react'
-import { Inspired, Messages, Occation, Packages, Platform } from '../../components'
+import React from "react";
+import {
+  Inspired,
+  Messages,
+  Occation,
+  Packages,
+  Platform,
+} from "../../components";
 const HotelList = () => {
   return (
     <div>
@@ -9,7 +15,7 @@ const HotelList = () => {
       {/* <Inspired /> */}
       <Platform />
     </div>
-  )
-}
+  );
+};
 
-export default HotelList
+export default HotelList;

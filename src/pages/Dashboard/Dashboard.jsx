@@ -12,9 +12,7 @@ const Dashboard = () => {
           <div className=" flex items-center gap-3">
             <img src={icon} alt="" />
             <div>
-              <h1 className=" text-[#2b2b2b] text-[14px] font-medium">
-                Users
-              </h1>
+              <h1 className=" text-[#2b2b2b] text-[14px] font-medium">Users</h1>
               <p className=" text-[18px] text-[#434343] font-[700]">104K</p>
             </div>
           </div>
@@ -24,9 +22,7 @@ const Dashboard = () => {
           <div className=" flex items-center gap-3">
             <img src={icon} alt="" />
             <div>
-              <h1 className=" text-[#2b2b2b] text-[14px] font-medium">
-                Halls
-              </h1>
+              <h1 className=" text-[#2b2b2b] text-[14px] font-medium">Halls</h1>
               <p className=" text-[18px] text-[#434343] font-[700]">50</p>
             </div>
           </div>

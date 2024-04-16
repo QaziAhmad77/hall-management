@@ -4,15 +4,15 @@ import img3 from "../../assets/images/image 1 (2).png";
 import img4 from "../../assets/images/image 1 (3).png";
 import img5 from "../../assets/images/image 11.png";
 import img6 from "../../assets/images/image 3.png";
-import img7 from '../../assets/images/image 5.png'
-import img8 from '../../assets/images/image 6.png'
-import img9 from '../../assets/images/image 7.png'
-import img10 from '../../assets/images/image 8.png'
+import img7 from "../../assets/images/image 5.png";
+import img8 from "../../assets/images/image 6.png";
+import img9 from "../../assets/images/image 7.png";
+import img10 from "../../assets/images/image 8.png";
 import img11 from "../../assets/images/image 3.png";
-import img12 from '../../assets/images/image 5.png'
-import img13 from '../../assets/images/image 6.png'
-import img14 from '../../assets/images/image 7.png'
-import img15 from '../../assets/images/image 8.png'
+import img12 from "../../assets/images/image 5.png";
+import img13 from "../../assets/images/image 6.png";
+import img14 from "../../assets/images/image 7.png";
+import img15 from "../../assets/images/image 8.png";
 import { FaCar, FaHome } from "react-icons/fa";
 
 export const home = [
@@ -308,105 +308,104 @@ export const Choose2 = [];
 
 export const days = [
   {
-      id: 1,
-      day: 'Mon',
+    id: 1,
+    day: "Mon",
   },
   {
-      id: 2,
-      day: 'Tue',
+    id: 2,
+    day: "Tue",
   },
   {
-      id: 3,
-      day: 'Wed',
+    id: 3,
+    day: "Wed",
   },
   {
-      id: 4,
-      day: 'Thu',
+    id: 4,
+    day: "Thu",
   },
   {
-      id: 5,
-      day: 'Fri',
+    id: 5,
+    day: "Fri",
   },
   {
-      id: 6,
-      day: 'Sat',
+    id: 6,
+    day: "Sat",
   },
   {
-      id: 7,
-      day: 'Sun',
-  }
+    id: 7,
+    day: "Sun",
+  },
 ];
-
 
 export const data = [
   {
-    name: 'Jan',
+    name: "Jan",
     uv: 4000,
     pv: 2400,
     amt: 2400,
   },
   {
-    name: 'Feb',
+    name: "Feb",
     uv: 3000,
     pv: 1398,
     amt: 2210,
   },
   {
-    name: 'Mar',
+    name: "Mar",
     uv: 2000,
     pv: 9800,
     amt: 2290,
   },
   {
-    name: 'Apr',
+    name: "Apr",
     uv: 2780,
     pv: 3908,
     amt: 2000,
   },
   {
-    name: 'May',
+    name: "May",
     uv: 1890,
     pv: 4800,
     amt: 2181,
   },
   {
-    name: 'Jun',
+    name: "Jun",
     uv: 2390,
     pv: 3800,
     amt: 2500,
   },
   {
-    name: 'Jul',
+    name: "Jul",
     uv: 3490,
     pv: 4300,
     amt: 2100,
   },
   {
-    name: 'Aug',
+    name: "Aug",
     uv: 3490,
     pv: 8300,
     amt: 2100,
   },
   {
-    name: 'Sep',
+    name: "Sep",
     uv: 3490,
     pv: 4300,
     amt: 2100,
   },
   {
-    name: 'Oct',
+    name: "Oct",
     uv: 3490,
     pv: 1300,
     amt: 2100,
   },
   {
-    name: 'Nov',
+    name: "Nov",
     uv: 3490,
     pv: 6300,
     amt: 2100,
   },
   {
-    name: 'Dec',
+    name: "Dec",
     uv: 3490,
     pv: 2300,
     amt: 2100,

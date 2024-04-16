@@ -2,11 +2,15 @@ import React from "react";
 import { Link, ScrollRestoration } from "react-router-dom";
 
 const Occation = () => {
-
   return (
     <div className=" bg12 w-full md:h-[348px] h-[544px]">
       <ScrollRestoration />
-      <Link to="/create-hall" className="bg-orange-500 flex items-center justify-center h-[56px] rounded-[8px] p-2 text-white absolute right-4 top-4">Create Your Own Hall</Link>
+      <Link
+        to="/create-hall"
+        className="bg-orange-500 flex items-center justify-center h-[56px] rounded-[8px] p-2 text-white absolute right-4 top-4"
+      >
+        Create Your Own Hall
+      </Link>
       <div className=" w-[80%] mx-auto">
         <h1 className=" md:text-[42px] sm:text-[32px] text-[29px] font-bold  pt-32 text-white text-center">
           Find your hall for any occasion
@@ -27,20 +31,14 @@ const Occation = () => {
                 htmlFor={`noon`}
               >
                 Lunch event
-                <input
-                  type="checkbox"
-                  id="noon"
-                />
+                <input type="checkbox" id="noon" />
               </label>
               <label
                 className="flex items-center gap-2 whitespace-nowrap"
                 htmlFor={`dinner`}
               >
                 Dinner event
-                <input
-                  type="checkbox"
-                  id="dinner"
-                />
+                <input type="checkbox" id="dinner" />
               </label>
             </div>
             <input
