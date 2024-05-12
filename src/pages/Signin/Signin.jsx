@@ -19,7 +19,7 @@ const Signin = () => {
       setEmail("");
       setPassword("");
       showToast(result.message, "success", true);
-      navigate("/");
+      navigate("/halls");
     } else {
       showToast(result.message, "error", true);
     }
