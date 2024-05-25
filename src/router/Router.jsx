@@ -15,6 +15,7 @@ import User from "../components/Dashboard/User";
 import Owner from "../components/Dashboard/Halls";
 import CreateHall from "../pages/CreateHall/CreateHall";
 import HallDetail from "../pages/HallDetail/HallDetail";
+import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,9 +26,9 @@ export const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
       </Route>
 
-      <Route path="halls" element={<HotelList />} />
-      <Route path="hall/:hallId" element={<HallDetail />} />
-      <Route path="create-hall" element={<CreateHall />} />
+      <Route path="halls" element={<ProtectedRoute><HotelList /></ProtectedRoute>} />
+      <Route path="hall/:hallId" element={<ProtectedRoute><HallDetail /></ProtectedRoute>} />
+      <Route path="create-hall" element={<ProtectedRoute><CreateHall /></ProtectedRoute>} />
 
       <Route path="/" element={<MainLayout />}>
         <Route path="dashboard" element={<Dashboard />} />
