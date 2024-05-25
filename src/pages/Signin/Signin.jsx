@@ -16,6 +16,7 @@ const Signin = () => {
     };
     const result = await login(requestData);
     if (result.success) {
+      localStorage.setItem('currentUser', JSON.stringify(result?.user));
       setEmail("");
       setPassword("");
       showToast(result.message, "success", true);

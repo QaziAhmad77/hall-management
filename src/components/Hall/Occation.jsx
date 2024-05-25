@@ -25,7 +25,7 @@ const Occation = () => {
                 onFocus={(e) => e.target.type = "date"}
               />
             </label> */}
-            <div className="text-[18px] text-white flex gap-4">
+            {/* <div className="text-[18px] text-white flex gap-4">
               <label
                 className="flex items-center gap-2 whitespace-nowrap"
                 htmlFor={`noon`}
@@ -40,7 +40,7 @@ const Occation = () => {
                 Dinner event
                 <input type="checkbox" id="dinner" />
               </label>
-            </div>
+            </div> */}
             <input
               className=" py-3 px-3 rounded-md outline-none"
               type="text"

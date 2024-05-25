@@ -35,3 +35,23 @@ export const register = async (formdata) => {
     return error.response.data;
   }
 };
+
+// create hall
+export const createHall = async (formdata, id) => {
+  try {
+    const { data } = await axiosInstance.post(
+      `${server}/users/${id}/createHall`,
+      formdata,
+      {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    );
+    return data;
+  } catch (error) {
+    console.error(error.response.data);
+    return error.response.data;
+  }
+};
