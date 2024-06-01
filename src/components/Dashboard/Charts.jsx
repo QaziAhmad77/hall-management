@@ -2,17 +2,13 @@ import React from "react";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
-import { data } from "../Data/Data";
 
-const Charts = ({ heading }) => {
+const Charts = ({ heading, data }) => {
   return (
     <div className="h-[350px] flex-1">
       <h1 className="text-[20px] font-bold mx-auto">Yearly {heading}</h1>
@@ -29,18 +25,10 @@ const Charts = ({ heading }) => {
             bottom: 5,
           }}
         >
-          {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis
-            dataKey="name"
-            axisLine={false}
-            dy={3}
-            tickLine={false}
-            padding={{ left: 10, right: 10 }}
-          />
+          <XAxis dataKey="name" axisLine={false} dy={3} tickLine={false}  />
           <YAxis axisLine={false} tickLine={false} />
           <Tooltip />
-          <Bar dataKey="pv" stackId="a" fill="#F39D12" />
-          <Bar dataKey="uv" stackId="a" fill="#F2F2F2" />
+          <Bar dataKey="count" stackId="a" fill="#F39D12" />
         </BarChart>
       </ResponsiveContainer>
     </div>

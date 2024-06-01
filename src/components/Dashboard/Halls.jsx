@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import main from "../../assets/images/Ellipse 16.png";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useState } from "react";
+import { getHalls } from "../../services/auth";
+import { showToast } from "../../utils/showToast";
 const Owner = () => {
+  const [halls, setHalls] = useState([]);
+  console.log(halls, "halls")
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+
+  const getData = async (e) => {
+    const result = await getHalls(user?._id);
+    if (result.success) {
+      setHalls(result.halls);
+    } else {
+      showToast(result.message, "error", true);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, [])
+
   return (
     <div className="w-[80%] ml-60 mb-12">
       <div className="w-full flex flex-col gap-7 mt-12 bg-[#f8f8f8] p-4 rounded-2xl">
@@ -16,89 +36,40 @@ const Owner = () => {
               Hall Name
             </th>
             <th className=" text-[#949494] text-[14px] font-normal">
-              Phone Number
+              Address
             </th>
             <th className=" text-[#949494] text-[14px] font-normal">
               Email Address
             </th>
-            <th className=" text-[#949494] text-[14px] font-normal">Address</th>
-            <th className=" text-[#949494] text-[14px] font-normal">Request</th>
-          </tr>
-          <tr className=" hover:bg-[#f4eeea94] text-[14px]">
-            <td className="flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>Serena Hall</td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>GT Road Peshawar</td>
-            <td className="flex gap-2">
-              <button className="bg-green-500 text-white p-2.5 rounded-[6px]">
-                Accept
-              </button>
-              <button className="bg-red-500 text-white p-2.5 rounded-[6px]">
-                Reject
-              </button>
-            </td>
+            <th className=" text-[#949494] text-[14px] font-normal">Rent Charges</th>
+            <th className=" text-[#949494] text-[14px] font-normal">Capacity</th>
+            <th className=" text-[#949494] text-[14px] font-normal">Action</th>
           </tr>
 
-          <tr className=" hover:bg-[#f4eeea94] text-[14px]">
-            <td className="flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>Serena Hall</td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>GT Road Peshawar</td>
-            <td className="flex gap-2">
-              <button className="bg-green-500 text-white p-2.5 rounded-[6px]">
-                Accept
-              </button>
-              <button className="bg-red-500 text-white p-2.5 rounded-[6px]">
-                Reject
-              </button>
-            </td>
-          </tr>
+          {
+            halls.map((hall, index) => (
+              <tr key={index} className=" hover:bg-[#f4eeea94] text-[14px]">
+                <td className="flex gap-4 items-center">
+                  <img src={main} alt="" />
+                  {hall?.ownerName}
+                </td>
+                <td>{hall?.name}</td>
+                <td>{hall?.location}</td>
+                <td>{hall?.email}</td>
+                <td>{hall?.rentCharge}</td>
+                <td>{hall?.capacity}</td>
+                <td className="flex gap-2">
+                  <button className="bg-green-500 text-white p-2.5 rounded-[6px]">
+                    Accept
+                  </button>
+                  <button className="bg-red-500 text-white p-2.5 rounded-[6px]">
+                    Reject
+                  </button>
+                </td>
+              </tr>
+            ))
+          }
 
-          <tr className=" hover:bg-[#f4eeea94] text-[14px]">
-            <td className="flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>Serena Hall</td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>GT Road Peshawar</td>
-            <td className="flex gap-2">
-              <button className="bg-green-500 text-white p-2.5 rounded-[6px]">
-                Accept
-              </button>
-              <button className="bg-red-500 text-white p-2.5 rounded-[6px]">
-                Reject
-              </button>
-            </td>
-          </tr>
-
-          <tr className=" hover:bg-[#f4eeea94] text-[14px]">
-            <td className="flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>Serena Hall</td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>GT Road Peshawar</td>
-            <td className="flex gap-2">
-              <button className="bg-green-500 text-white p-2.5 rounded-[6px]">
-                Accept
-              </button>
-              <button className="bg-red-500 text-white p-2.5 rounded-[6px]">
-                Reject
-              </button>
-            </td>
-          </tr>
         </table>
       </div>
     </div>

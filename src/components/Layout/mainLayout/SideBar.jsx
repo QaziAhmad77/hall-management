@@ -12,33 +12,39 @@ const SideBar = () => {
       <ul className=" flex flex-col gap-4 mt-16">
         <Link
           to="/dashboard"
-          className={`py-3 px-5 ${
-            location.pathname === "/dashboard"
-              ? "bg-orange-300 text-white"
-              : "text-white"
-          }`}
+          className={`py-3 px-5 ${location.pathname === "/dashboard"
+            ? "bg-orange-300 text-white"
+            : "text-white"
+            }`}
         >
           Dashboard
         </Link>
         <Link
-          to="/users"
-          className={`py-3 px-5 ${
-            location.pathname === "/users"
-              ? "bg-orange-300 text-white"
-              : "text-white"
-          }`}
+          to="/dashboard/users"
+          className={`py-3 px-5 ${location.pathname === "/dashboard/users"
+            ? "bg-orange-300 text-white"
+            : "text-white"
+            }`}
         >
           Users
         </Link>
         <Link
-          to="/hall-list"
-          className={`py-3 px-5 ${
-            location.pathname === "/hall-list"
-              ? "bg-orange-300 text-white"
-              : "text-white"
-          }`}
+          to="/dashboard/hall-list"
+          className={`py-3 px-5 ${location.pathname === "/dashboard/hall-list"
+            ? "bg-orange-300 text-white"
+            : "text-white"
+            }`}
         >
           Halls
+        </Link>
+        <Link
+          to="/dashboard/booked-halls"
+          className={`py-3 px-5 ${location.pathname === "/dashboard/booked-halls"
+            ? "bg-orange-300 text-white"
+            : "text-white"
+            }`}
+        >
+          Booked Halls
         </Link>
       </ul>
     </div>

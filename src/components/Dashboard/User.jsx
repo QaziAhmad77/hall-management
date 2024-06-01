@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import main from "../../assets/images/Ellipse 16.png";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import { showToast } from "../../utils/showToast";
+import { getUsers } from "../../services/auth";
 const User = () => {
   const style = {
     position: "absolute",
@@ -16,9 +18,24 @@ const User = () => {
     boxShadow: 24,
     p: 4,
   };
+  const [users, setUsers] = useState([])
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const getData = async (e) => {
+    const result = await getUsers();
+    if (result.success) {
+      setUsers(result.Users);
+    } else {
+      showToast(result.message, "error", true);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, [])
+
   return (
     <div className="w-[80%] ml-60 mb-12">
       <div className="w-full flex flex-col gap-7 mt-12 bg-[#F8F8F8] p-4 rounded-2xl">
@@ -27,57 +44,24 @@ const User = () => {
         <table className="relative bg-white w-full mx-auto rounded-2xl">
           <tr>
             <th className=" text-[#949494] text-[14px] font-normal">Name</th>
+            <th className=" text-[#949494] text-[14px] font-normal">Email</th>
             <th className=" text-[#949494] text-[14px] font-normal">Number</th>
             <th className=" text-[#949494] text-[14px] font-normal">Address</th>
             <th className=" text-[#949494] text-[14px] font-normal">Actions</th>
           </tr>
-          <tr className=" hover:bg-[#f4eeea94]">
-            <td className=" flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>
-              <BsThreeDotsVertical />
-            </td>
-          </tr>
-
-          <tr className=" hover:bg-[#f4eeea94]">
-            <td className=" flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>
-              <BsThreeDotsVertical />
-            </td>
-          </tr>
-
-          <tr className=" hover:bg-[#f4eeea94]">
-            <td className=" flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>
-              <BsThreeDotsVertical />
-            </td>
-          </tr>
-
-          <tr className=" hover:bg-[#f4eeea94]">
-            <td className=" flex gap-4 items-center">
-              <img src={main} alt="" />
-              Albert Flores{" "}
-            </td>
-            <td>+9921487982487</td>
-            <td>curtis.weaver@example.com</td>
-            <td>
-              <BsThreeDotsVertical />
-            </td>
-          </tr>
+          {
+            users.map((user) => (
+              <tr>
+                <td className=" text-[#717171] text-[14px] font-normal">{user.fullName}</td>
+                <td className=" text-[#717171] text-[14px] font-normal">{user.Email}</td>
+                <td className=" text-[#717171] text-[14px] font-normal">{user.phoneNumber}</td>
+                <td className=" text-[#717171] text-[14px] font-normal">{user.address}</td>
+                <td className=" text-[#717171] text-[14px] font-normal">
+                  <BsThreeDotsVertical onClick={handleOpen} />
+                </td>
+              </tr>
+            ))
+          }
         </table>
       </div>
 
