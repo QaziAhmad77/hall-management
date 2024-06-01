@@ -1,12 +1,11 @@
 import React, { useState } from "react";
+import { parseISO, format, getUnixTime } from "date-fns";
 
 const Timings = ({ hotelDetail }) => {
   const [eventDetails, setEventDetails] = useState({
     eventDate: "",
     eventTime: "",
   });
-
-  console.log(eventDetails, "eventDetails`")
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -16,14 +15,14 @@ const Timings = ({ hotelDetail }) => {
     });
   };
 
-
   const submitDateAndTime = async () => {
     if (eventDetails.eventDate && eventDetails.eventTime) {
-      const dateTimeString = `${eventDetails.eventDate}T${eventDetails.eventTime}:00`;
-      const date = new Date(dateTimeString);
-      const unixTime = Math.floor(date.getTime() / 1000);
+      const dateTimeString = `${eventDetails.eventDate}T${eventDetails.eventTime}`;
+      const date = parseISO(dateTimeString);
+      const unixTime = getUnixTime(date);
       console.log("Unix Timestamp:", unixTime);
-      
+
+      // Uncomment and configure the below code to send the Unix timestamp to your backend
       // try {
       //   const response = await fetch('', {
       //     method: 'POST',
