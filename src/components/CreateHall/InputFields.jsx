@@ -11,6 +11,7 @@ const InputFields = () => {
   const user = JSON.parse(localStorage.getItem('currentUser'));
   const [formData, setFormData] = useState({
     name: '',
+    ownerName: '',
     location: '',
     area: '',
     capacity: '',
@@ -45,7 +46,7 @@ const InputFields = () => {
       data.append("files", image)
     });
 
-    const result = await createHall(data, user?._id);
+    const result = await createHall(data, user?._id)
     if (result.success) {
       showToast(result.message, "success", true);
       navigate("/halls");
@@ -68,6 +69,15 @@ const InputFields = () => {
           value={formData.name}
           onChange={handleInputChange}
           placeholder="Enter Hall Name"
+        />
+        <input
+          className="p-2 border-[1px] rounded-2xl max-h-[53px] h-[53px] border-[#E6E6E6] outline-none"
+          type="text"
+          id="ownerName"
+          name="ownerName"
+          value={formData.ownerName}
+          onChange={handleInputChange}
+          placeholder="Enter Owner Name"
         />
         <input
           className="p-2 border-[1px] rounded-2xl max-h-[55px] h-[55px] border-[#E6E6E6] outline-none"
