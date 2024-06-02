@@ -9,10 +9,12 @@ const HallInfo = ({ hotelDetail }) => {
 
   return (
     <div className="flex flex-col gap-4 mx-auto mt-8 w-[80%]">
-      <div className="flex flex-col gap-3 w-full">
-        <div className="flex w-full justify-between gap-3 border-b pb-3 border-slate-300">
+      <div className="flex flex-col w-full gap-3">
+        <div className="flex justify-between w-full gap-3 pb-3 border-b border-slate-300">
           <div className="flex flex-col ">
-            <h1 className=" text-[16px] font-semibold ">Hosted By {hotelDetail?.ownerName}</h1>
+            <h1 className=" text-[16px] font-semibold ">
+              Hosted By {hotelDetail?.ownerName}
+            </h1>
             <p className=" text-[#717171] text-[14px] font-normal">
               Super host 2 years hosting{" "}
             </p>
@@ -47,7 +49,7 @@ const HallInfo = ({ hotelDetail }) => {
         </div>
         <div className="flex flex-col gap-1">
           <h1 className="text-[16px] font-semibold">Description</h1>
-          <p className="text-sm indent-14 text-justify">
+          <p className="text-sm text-justify indent-14">
             {hotelDetail?.description}
           </p>
         </div>

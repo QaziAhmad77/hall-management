@@ -45,11 +45,11 @@ export const createHall = async (formdata, id) => {
       {
         withCredentials: true,
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       }
     );
-    console.log(data, "data")
+    console.log(data, "data");
     return data;
   } catch (error) {
     console.error(error.response.data);
@@ -75,7 +75,7 @@ export const getHalls = async (id) => {
 
 // get single user Halls
 export const getMyHalls = async (id) => {
-  console.log(id, "ID")
+  console.log(id, "ID");
   try {
     const { data } = await axiosInstance.get(
       `${server}/users/${id}/getMyHalls`,
@@ -108,8 +108,37 @@ export const getSingleHall = async (userId, hallId) => {
 // fetch all users
 export const getUsers = async (id) => {
   try {
-    const { data } = await axiosInstance.get(
-      `${server}/getAllUsers`,
+    const { data } = await axiosInstance.get(`${server}/getAllUsers`, {
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    console.error(error.response.data);
+    return error.response.data;
+  }
+};
+
+export const getPaymentDetail = async (userId, hallId, amount) => {
+  try {
+    const { data } = await axiosInstance.post(
+      `${server}/users/${userId}/halls/${hallId}/getPaymentIntent`,
+      { amount },
+      {
+        withCredentials: true,
+      }
+    );
+    return data;
+  } catch (error) {
+    console.error(error.response.data);
+    return error.response.data;
+  }
+};
+
+export const bookHall = async (userId, hallId, bookingData) => {
+  try {
+    const { data } = await axiosInstance.post(
+      `${server}/users/${userId}/halls/${hallId}/bookHall`,
+      bookingData,
       {
         withCredentials: true,
       }

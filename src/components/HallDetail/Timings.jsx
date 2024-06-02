@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { parseISO, format, getUnixTime } from "date-fns";
+import { parseISO, getUnixTime } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import { showToast } from "../../utils/showToast";
 
 const Timings = ({ hotelDetail }) => {
+  const navigate = useNavigate();
   const [eventDetails, setEventDetails] = useState({
     eventDate: "",
     eventTime: "",
@@ -11,41 +14,36 @@ const Timings = ({ hotelDetail }) => {
     const { name, value } = e.target;
     setEventDetails({
       ...eventDetails,
-      [name]: value
+      [name]: value,
     });
   };
 
   const submitDateAndTime = async () => {
+    localStorage.setItem("hall", JSON.stringify(hotelDetail && hotelDetail));
+
     if (eventDetails.eventDate && eventDetails.eventTime) {
       const dateTimeString = `${eventDetails.eventDate}T${eventDetails.eventTime}`;
       const date = parseISO(dateTimeString);
       const unixTime = getUnixTime(date);
-      console.log("Unix Timestamp:", unixTime);
+      localStorage.setItem(
+        "bookingDateAndTime",
+        JSON.stringify(unixTime && unixTime)
+      );
 
-      // Uncomment and configure the below code to send the Unix timestamp to your backend
-      // try {
-      //   const response = await fetch('', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify({ eventTimestamp: unixTime }),
-      //   });
-
-      //   const data = await response.json();
-      //   console.log('Success:', data);
-      // } catch (error) {
-      //   console.error('Error:', error);
-      // }
+      navigate(`/hall/${hotelDetail?._id}/book`);
+    } else {
+      showToast("Please select booking date and time", "error", true);
     }
   };
 
   return (
-    <div className="flex justify-between gap-4 w-full mt-8">
+    <div className="flex justify-between w-full gap-4 mt-8">
       <div className="flex flex-col">
-        <h1 className="font-semibold text-[24px]">Select Event Date and Time and Book Your Hall</h1>
-        <div className="flex items-center justify-between gap-4 flex-grow w-full">
-          <label className="flex flex-col gap-2 flex-1">
+        <h1 className="font-semibold text-[24px]">
+          Select Event Date and Time and Book Your Hall
+        </h1>
+        <div className="flex items-center justify-between flex-grow w-full gap-4">
+          <label className="flex flex-col flex-1 gap-2">
             Select Date
             <input
               type="date"
@@ -55,7 +53,7 @@ const Timings = ({ hotelDetail }) => {
               onChange={handleInputChange}
             />
           </label>
-          <label className="flex flex-col gap-2 flex-1">
+          <label className="flex flex-col flex-1 gap-2">
             Select Time
             <input
               type="time"
@@ -68,7 +66,7 @@ const Timings = ({ hotelDetail }) => {
         </div>
       </div>
 
-      <div className="px-4 flex flex-col gap-4 w-1/3">
+      <div className="flex flex-col w-1/3 gap-4 px-4">
         <h1 className="text-[22px] font-semibold">Night Event</h1>
         <div className="flex flex-col gap-4">
           <p className="text-[15px] font-normal flex items-center justify-between">
@@ -78,7 +76,12 @@ const Timings = ({ hotelDetail }) => {
           <p className="text-[15px] font-bold flex items-center justify-between">
             Total with taxes <span>{hotelDetail?.rentCharge}</span>
           </p>
-          <button className="bg-orange-400 text-white font-semibold rounded-[16px] h-[56px] p-3" onClick={submitDateAndTime}>Book Now</button>
+          <button
+            className="bg-orange-400 text-white font-semibold rounded-[16px] h-[56px] p-3"
+            onClick={submitDateAndTime}
+          >
+            Book Now
+          </button>
         </div>
       </div>
     </div>
