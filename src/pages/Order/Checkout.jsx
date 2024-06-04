@@ -45,7 +45,10 @@ const CheckoutForm = ({ placeOrderData }) => {
       showToast("Hall Booked  Successfully", "success", true);
       navigate(`/halls`);
     } else {
-      showToast("Place order failed", "error", true);
+      console.log("res, ", response);
+      navigate(`/halls`);
+
+      showToast(response.message, "error", false);
     }
   };
 
