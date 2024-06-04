@@ -6,7 +6,7 @@ import { createHall } from "../../services/auth";
 
 const InputFields = () => {
   const navigate = useNavigate();
-  const [loadin, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [images, setImages] = useState([]);
   const user = JSON.parse(localStorage.getItem('currentUser'));
   const [formData, setFormData] = useState({
@@ -51,6 +51,7 @@ const InputFields = () => {
       showToast(result.message, "success", true);
       navigate("/halls");
     } else {
+      setLoading(false)
       showToast(result.message, "error", true);
     }
   };
@@ -150,7 +151,7 @@ const InputFields = () => {
             multiple
           />
         </label>
-        <button className="bg-orange-400 text-white font-semibold rounded-[16px] h-[56px] p-3" type="submit">{loadin ? "Loading" : "Submit"}</button>
+        <button className="bg-orange-400 text-white font-semibold rounded-[16px] h-[56px] p-3" type="submit">{loading ? "Loading....." : "Submit"}</button>
       </form>
     </div>
   );
