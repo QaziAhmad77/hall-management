@@ -23,20 +23,14 @@ const Packages = ({ halls }) => {
       <div className=" grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-11 pt-16 mx-auto">
         {slice.map((item) => {
           return (
-            <div className=" ">
-              <div className="relative">
+            <div className="relative">
+              <div className="">
                 <img src={item.files[0]?.url} alt="" />
                 <div className=" absolute top-0">
                   <p className=" bg-black py-1 px-2 text-white w-fit">
                     {item?.name}
                   </p>
                 </div>
-                <Link
-                  to={`/hall/${item._id}`}
-                  className=" bg-[#F39D12] text-white py-3 px-6 rounded-md relative top-[-90px] left-[100px]"
-                >
-                  Check Availability
-                </Link>
               </div>
               <div className=" flex items-center justify-between gap-40">
                 <h1 className=" text-[14px] font-normal flex gap-3 items-center">
@@ -57,6 +51,12 @@ const Packages = ({ halls }) => {
                   Rs {item.rentCharge}
                 </p>
               </div>
+              <Link
+                to={`/hall/${item._id}`}
+                className=" bg-[#F39D12] text-white py-3 px-6 rounded-md absolute left-[50%] -translate-x-[50%] -translate-y-[50%] top-[50%]"
+              >
+                Check Availability
+              </Link>
             </div>
           );
         })}
