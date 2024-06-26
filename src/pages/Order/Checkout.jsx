@@ -65,7 +65,7 @@ const CheckoutForm = ({ placeOrderData }) => {
           type="submit"
           disabled={!stripe}
         >
-          {loading ? "Submitting..." : `Pay RS ${placeOrderData?.amount}`}
+          {loading ? "Submitting..." : `Pay RS ${placeOrderData?.amount + 10000}`}
         </button>
       </form>
     </div>

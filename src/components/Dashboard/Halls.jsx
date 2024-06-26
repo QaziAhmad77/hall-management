@@ -43,14 +43,14 @@ const Owner = () => {
             </th>
             <th className=" text-[#949494] text-[14px] font-normal">Rent Charges</th>
             <th className=" text-[#949494] text-[14px] font-normal">Capacity</th>
-            <th className=" text-[#949494] text-[14px] font-normal">Action</th>
+            {/* <th className=" text-[#949494] text-[14px] font-normal">Action</th> */}
           </tr>
 
           {
             halls.map((hall, index) => (
               <tr key={index} className=" hover:bg-[#f4eeea94] text-[14px]">
                 <td className="flex gap-4 items-center">
-                  <img src={main} alt="" />
+                  {/* <img src={main} alt="" /> */}
                   {hall?.ownerName}
                 </td>
                 <td>{hall?.name}</td>
@@ -58,14 +58,14 @@ const Owner = () => {
                 <td>{hall?.email}</td>
                 <td>{hall?.rentCharge}</td>
                 <td>{hall?.capacity}</td>
-                <td className="flex gap-2">
+                {/* <td className="flex gap-2">
                   <button className="bg-green-500 text-white p-2.5 rounded-[6px]">
                     Accept
                   </button>
                   <button className="bg-red-500 text-white p-2.5 rounded-[6px]">
                     Reject
                   </button>
-                </td>
+                </td> */}
               </tr>
             ))
           }

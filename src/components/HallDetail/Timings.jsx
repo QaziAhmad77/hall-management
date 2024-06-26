@@ -7,7 +7,7 @@ const Timings = ({ hotelDetail }) => {
   const navigate = useNavigate();
   const [eventDetails, setEventDetails] = useState({
     eventDate: "",
-    eventTime: "",
+    // eventTime: "",
   });
 
   const handleInputChange = (e) => {
@@ -21,8 +21,9 @@ const Timings = ({ hotelDetail }) => {
   const submitDateAndTime = async () => {
     localStorage.setItem("hall", JSON.stringify(hotelDetail && hotelDetail));
 
-    if (eventDetails.eventDate && eventDetails.eventTime) {
-      const dateTimeString = `${eventDetails.eventDate}T${eventDetails.eventTime}`;
+    if (eventDetails.eventDate) {
+      // const dateTimeString = `${eventDetails.eventDate}T${eventDetails.eventTime}`;
+      const dateTimeString = `${eventDetails.eventDate}`;
       const date = parseISO(dateTimeString);
       const unixTime = getUnixTime(date);
       localStorage.setItem(
@@ -53,7 +54,7 @@ const Timings = ({ hotelDetail }) => {
               onChange={handleInputChange}
             />
           </label>
-          <label className="flex flex-col flex-1 gap-2">
+          {/* <label className="flex flex-col flex-1 gap-2">
             Select Time
             <input
               type="time"
@@ -62,7 +63,7 @@ const Timings = ({ hotelDetail }) => {
               value={eventDetails.eventTime}
               onChange={handleInputChange}
             />
-          </label>
+          </label> */}
         </div>
       </div>
 
@@ -72,9 +73,12 @@ const Timings = ({ hotelDetail }) => {
           <p className="text-[15px] font-normal flex items-center justify-between">
             Hall Rent <span>{hotelDetail?.rentCharge}</span>
           </p>
+          <p className="text-[15px] font-normal flex items-center justify-between">
+            Tax <span>10000</span>
+          </p>
           <p className="h-[1px] w-[90%] mx-auto bg-[#b0abab]"></p>
           <p className="text-[15px] font-bold flex items-center justify-between">
-            Total with taxes <span>{hotelDetail?.rentCharge}</span>
+            Total with taxes <span>{hotelDetail?.rentCharge + 10000}</span>
           </p>
           <button
             className="bg-orange-400 text-white font-semibold rounded-[16px] h-[56px] p-3"

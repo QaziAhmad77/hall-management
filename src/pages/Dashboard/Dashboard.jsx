@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import icon from "./../../assets/images/Icon12.png";
 import Charts from "../../components/Dashboard/Charts";
-import { getHalls, getUsers } from "../../services/auth";
+import { getAllBookings, getHalls, getUsers } from "../../services/auth";
 import { showToast } from "../../utils/showToast";
 
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
   const [halls, setHalls] = useState([]);
+  const [bookings, setBookings] = useState([]);
   const user = JSON.parse(localStorage.getItem('currentUser'));
 
   const getUserData = async () => {
@@ -27,9 +28,20 @@ const Dashboard = () => {
     }
   };
 
+  const getBookingData = async (e) => {
+    const result = await getAllBookings();
+    console.log(result, "result")
+    if (result.success) {
+      setBookings(result?.myBookings);
+    } else {
+      // showToast(result.message, "error", true);
+    }
+  };
+
   useEffect(() => {
     getUserData();
     getHallData();
+    getBookingData()
   }, []);
 
   // Format data to match monthly chart data format
@@ -80,7 +92,7 @@ const Dashboard = () => {
             <img src={icon} alt="" />
             <div>
               <h1 className="text-[#2b2b2b] text-[14px] font-medium">Booked Halls</h1>
-              <p className="text-[18px] text-[#434343] font-[700]">30</p>
+              <p className="text-[18px] text-[#434343] font-[700]">{bookings?.length}</p>
             </div>
           </div>
         </div>

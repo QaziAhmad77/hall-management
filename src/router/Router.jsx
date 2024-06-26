@@ -22,6 +22,7 @@ import BookedHalls from "../pages/BookedHalls/BookedHalls";
 import AdminProtectedRoute from "../components/ProtectedRoute/AdminProtectedRoute";
 import Checkout from "../pages/Order/Checkout";
 import Payment from "../pages/Order/Payment";
+import BookedHallsDashboard from "../components/Dashboard/BookedHallsDashboard";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -100,7 +101,7 @@ export const router = createBrowserRouter(
         <Route index element={<Dashboard />} />
         <Route path="users" element={<User />} />
         <Route path="hall-list" element={<Owner />} />
-        <Route path="booked-halls" element={<Owner />} />
+        <Route path="booked-halls" element={<BookedHallsDashboard />} />
       </Route>
     </>
   )

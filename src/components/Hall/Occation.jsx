@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from "react";
 import { Link, ScrollRestoration, useNavigate } from "react-router-dom";
 import debounce from "lodash.debounce";
+import { FaRegUser } from "react-icons/fa";
 
 const Occation = ({ setHalls }) => {
   const navigate = useNavigate();
   const [searchVal, setSearchVal] = useState("");
   const admin = JSON.parse(localStorage.getItem("currentUser"));
-
+  console.log(admin, "admin")
   const fetchHalls = async (searchValue) => {
     try {
       const response = await fetch(
@@ -73,6 +74,12 @@ const Occation = ({ setHalls }) => {
             className="text-[18px] rounded-[8px] text-white border-[1px] border-orange-400 h-[56px] w-[100px] flex items-center justify-center cursor-pointer"
           >
             Logout
+          </h1>
+          <h1
+            className="text-[18px] rounded-[8px] text-white border-[1px] border-orange-400 h-[56px] px-2 flex items-center gap-3 cursor-pointer"
+          >
+            <FaRegUser className="w-6 h-6" />
+            <p className="flex flex-col">{admin?.fullName} <span className="text-[12px]">{admin?.email}</span></p>
           </h1>
         </div>
       </div>

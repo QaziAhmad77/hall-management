@@ -37,6 +37,12 @@ const HallInfo = ({ hotelDetail }) => {
               {hotelDetail?.area} Kanal
             </p>
           </div>
+          <div className="flex flex-col ">
+            <h1 className=" text-[16px] font-semibold ">Booked</h1>
+            <p className=" text-[#717171] text-[14px] font-normal">
+              {hotelDetail?.bookingCount} times Booked
+            </p>
+          </div>
           <p className="flex flex-col">
             <span className=" text-[18px] font-semibold">Rating</span>{" "}
             <ReactStars

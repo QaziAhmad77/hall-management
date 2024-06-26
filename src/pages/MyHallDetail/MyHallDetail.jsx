@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getSingleHall } from "../../services/auth";
+import { getSingleHall, getSpecificHallBookings } from "../../services/auth";
 import { ScrollRestoration, useParams } from "react-router-dom";
 import { showToast } from "../../utils/showToast";
 import GridImages from "../../components/HallDetail/GridImages";
@@ -8,10 +8,11 @@ import ReactStars from "react-stars";
 
 const MyHallDetail = () => {
   const { hallId } = useParams();
+  const [bookings, setBookings] = useState();
   const [mainImage, setMainImage] = useState();
   const [hotelDetail, setHotelDetail] = useState();
   const user = JSON.parse(localStorage.getItem("currentUser"));
-  console.log("current user", user);
+
   const getData = async (e) => {
     const result = await getSingleHall(user?._id, hallId);
     if (result.success) {
@@ -20,9 +21,18 @@ const MyHallDetail = () => {
       showToast(result.message, "error", true);
     }
   };
+  const getBookingsData = async (e) => {
+    const result = await getSpecificHallBookings(user?._id, hallId);
+    if (result.success) {
+      setBookings(result.bookings);
+    } else {
+      showToast(result.message, "error", true);
+    }
+  };
 
   useEffect(() => {
     getData();
+    getBookingsData()
   }, []);
 
   const ratingChanged = (newRating) => {
@@ -39,6 +49,7 @@ const MyHallDetail = () => {
             mainImage={mainImage}
             setMainImage={setMainImage}
             hotelDetail={hotelDetail}
+            bookings={bookings}
           />
           <div className="flex flex-col gap-4 mx-auto mt-8 w-[80%]">
             <div className="flex flex-col w-full gap-3">
@@ -67,6 +78,12 @@ const MyHallDetail = () => {
                   <h1 className=" text-[16px] font-semibold ">Hall Area</h1>
                   <p className=" text-[#717171] text-[14px] font-normal">
                     {hotelDetail?.area} Kanal
+                  </p>
+                </div>
+                <div className="flex flex-col ">
+                  <h1 className=" text-[16px] font-semibold ">Booked</h1>
+                  <p className=" text-[#717171] text-[14px] font-normal">
+                    {hotelDetail?.bookingCount} times Booked
                   </p>
                 </div>
                 <p className="flex flex-col">

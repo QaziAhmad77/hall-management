@@ -31,7 +31,7 @@ const User = () => {
       showToast(result.message, "error", true);
     }
   };
-
+  console.log(users, 'users')
   useEffect(() => {
     getData();
   }, [])
@@ -47,17 +47,17 @@ const User = () => {
             <th className=" text-[#949494] text-[14px] font-normal">Email</th>
             <th className=" text-[#949494] text-[14px] font-normal">Number</th>
             <th className=" text-[#949494] text-[14px] font-normal">Address</th>
-            <th className=" text-[#949494] text-[14px] font-normal">Actions</th>
+            <th className=" text-[#949494] text-[14px] font-normal">role</th>
           </tr>
           {
             users.map((user) => (
               <tr>
                 <td className=" text-[#717171] text-[14px] font-normal">{user.fullName}</td>
-                <td className=" text-[#717171] text-[14px] font-normal">{user.Email}</td>
+                <td className=" text-[#717171] text-[14px] font-normal">{user.email}</td>
                 <td className=" text-[#717171] text-[14px] font-normal">{user.phoneNumber}</td>
                 <td className=" text-[#717171] text-[14px] font-normal">{user.address}</td>
                 <td className=" text-[#717171] text-[14px] font-normal">
-                  <BsThreeDotsVertical onClick={handleOpen} />
+                  {user?.role}
                 </td>
               </tr>
             ))

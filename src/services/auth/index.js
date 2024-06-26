@@ -149,3 +149,49 @@ export const bookHall = async (userId, hallId, bookingData) => {
     return error.response.data;
   }
 };
+
+export const getSpecificHallBookings = async (userId, hallId) => {
+  try {
+    const { data } = await axiosInstance.get(
+      `${server}/users/${userId}/halls/${hallId}/bookings`,
+      {
+        withCredentials: true,
+      }
+    );
+    return data;
+  } catch (error) {
+    console.error(error.response.data);
+    return error.response.data;
+  }
+};
+
+export const getMyBookings = async (userId) => {
+  try {
+    const { data } = await axiosInstance.get(
+      `${server}/users/${userId}/myBookings`,
+      {
+        withCredentials: true,
+      }
+    );
+    return data;
+  } catch (error) {
+    console.error(error?.response?.data);
+    return error?.response?.data;
+  }
+};
+
+export const getAllBookings = async () => {
+  try {
+    const data = await axiosInstance.get(
+      `${server}/users/getAllBookings`,
+      {
+        withCredentials: true,
+      }
+    );
+    console.log(data, "data")
+    return data?.data;
+  } catch (error) {
+    console.error(error?.response?.data);
+    return error?.response?.data;
+  }
+};
