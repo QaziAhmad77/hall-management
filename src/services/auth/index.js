@@ -188,10 +188,23 @@ export const getAllBookings = async () => {
         withCredentials: true,
       }
     );
-    console.log(data, "data")
     return data?.data;
   } catch (error) {
     console.error(error?.response?.data);
     return error?.response?.data;
+  }
+};
+
+// create hall
+export const saveEmail = async (email) => {
+  try {
+    const { data } = await axiosInstance.post(
+      `${server}/save-email`,
+      email,
+    );
+    return data;
+  } catch (error) {
+    console.error(error.response.data);
+    return error.response.data;
   }
 };

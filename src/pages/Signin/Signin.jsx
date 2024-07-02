@@ -7,9 +7,22 @@ const Signin = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email) => {
+    // Regular expression for email validation
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address.");
+      return;
+    }
+    setEmailError(""); // Clear any previous error messages
+
     const requestData = {
       email,
       password,
@@ -27,21 +40,22 @@ const Signin = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-5 ">
+    <div className="flex flex-col items-center justify-center gap-5">
       <ScrollRestoration />
-      <h1 className=" text-[#000] text-[24px] font-bold pt-28">
+      <h1 className="text-[#000] text-[24px] font-bold pt-28">
         Sign In or create an account
       </h1>
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 ">
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5">
         <input
-          className="input py-3 px-3 md:w-[500px] w/[322px]"
+          className="input py-3 px-3 md:w-[500px] w-[322px]"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {emailError && <p className="text-red-500">{emailError}</p>}
         <input
-          className="input py-3 px-3 md:w/[500px] w/[322px]"
+          className="input py-3 px-3 md:w-[500px] w/[322px]"
           type="password"
           placeholder="Password"
           value={password}

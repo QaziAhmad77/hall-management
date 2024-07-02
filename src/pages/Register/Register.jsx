@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ScrollRestoration, useNavigate } from "react-router-dom";
 import { register } from "../../services/auth";
 import { showToast } from "../../utils/showToast";
+
 const Register = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -11,6 +12,13 @@ const Register = () => {
     address: "",
     phoneNumber: "",
   });
+  const [emailError, setEmailError] = useState("");
+
+  const validateEmail = (email) => {
+    // Regular expression for email validation with .com at the end
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+(\.com)$/i;
+    return re.test(String(email).toLowerCase());
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,8 +31,18 @@ const Register = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setFormData({ ...formData, phoneNumber: parseInt(formData.phoneNumber) });
-    const result = await register(formData);
+    if (!validateEmail(formData.email)) {
+      setEmailError("Please enter a valid email address.");
+      // Clear the error message after 3 seconds
+      setTimeout(() => {
+        setEmailError("");
+      }, 3000);
+      return;
+    }
+    setEmailError(""); // Clear any previous error messages
+
+    const requestData = { ...formData, phoneNumber: parseInt(formData.phoneNumber) };
+    const result = await register(requestData);
     if (result.success) {
       showToast(result.message, "success", true);
       navigate("/");
@@ -56,6 +74,7 @@ const Register = () => {
           value={formData.email}
           onChange={handleInputChange}
         />
+        {emailError && <p className="text-red-500">{emailError}</p>}
         <input
           className="input py-3 px-3 md:w/[500px] w/[322px]"
           type="password"

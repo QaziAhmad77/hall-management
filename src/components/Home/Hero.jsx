@@ -8,7 +8,7 @@ const Hero = () => {
         <div className=" md:flex block items-center justify-between w-[90%] mx-auto gap-36">
           <div className=" flex flex-col gap-5 md:w-[40%] pt-6">
             <h1 className=" text-[#F39D12] lg:text-[40px] md:text-[30px] sm:text-[40px] text-[30px] font-[800]">
-              Hall Management Information System Desktop / Online Ver.
+              Hall Management Information System Desktop .
             </h1>
             <p className=" text-[#fff] text-[20px] font-normal">
               Manual systems are less prone to technical difficulties, but they

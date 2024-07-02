@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { parseISO, getUnixTime } from "date-fns";
+import { parseISO, getUnixTime, isPast } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { showToast } from "../../utils/showToast";
 
@@ -21,20 +21,22 @@ const Timings = ({ hotelDetail }) => {
   const submitDateAndTime = async () => {
     localStorage.setItem("hall", JSON.stringify(hotelDetail && hotelDetail));
 
-    if (eventDetails.eventDate) {
-      // const dateTimeString = `${eventDetails.eventDate}T${eventDetails.eventTime}`;
-      const dateTimeString = `${eventDetails.eventDate}`;
-      const date = parseISO(dateTimeString);
-      const unixTime = getUnixTime(date);
-      localStorage.setItem(
-        "bookingDateAndTime",
-        JSON.stringify(unixTime && unixTime)
-      );
-
-      navigate(`/hall/${hotelDetail?._id}/book`);
-    } else {
-      showToast("Please select booking date and time", "error", true);
+    if (!eventDetails.eventDate) {
+      showToast("Please select booking date", "error", true);
+      return;
     }
+
+    const selectedDate = parseISO(eventDetails.eventDate);
+
+    if (isPast(selectedDate)) {
+      showToast("Selected date cannot be in the past", "error", true);
+      return;
+    }
+
+    const unixTime = getUnixTime(selectedDate);
+    localStorage.setItem("bookingDateAndTime", JSON.stringify(unixTime));
+
+    navigate(`/hall/${hotelDetail?._id}/book`);
   };
 
   return (
@@ -54,16 +56,6 @@ const Timings = ({ hotelDetail }) => {
               onChange={handleInputChange}
             />
           </label>
-          {/* <label className="flex flex-col flex-1 gap-2">
-            Select Time
-            <input
-              type="time"
-              name="eventTime"
-              className="h-[56px] max-h-[56px] rounded-[16px] border-[1px] border-slate-300 outline-none px-2"
-              value={eventDetails.eventTime}
-              onChange={handleInputChange}
-            />
-          </label> */}
         </div>
       </div>
 
@@ -78,7 +70,8 @@ const Timings = ({ hotelDetail }) => {
           </p>
           <p className="h-[1px] w-[90%] mx-auto bg-[#b0abab]"></p>
           <p className="text-[15px] font-bold flex items-center justify-between">
-            Total with taxes <span>{hotelDetail?.rentCharge + 10000}</span>
+            Total with taxes{" "}
+            <span>{hotelDetail?.rentCharge + 10000}</span>
           </p>
           <button
             className="bg-orange-400 text-white font-semibold rounded-[16px] h-[56px] p-3"
